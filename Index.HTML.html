@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>English Quest: Time Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0B1330;--p:#16224B;--p2:#1C2C5C;--g:#F5B942;--t:#F4F1E6;--d:#8B95C2;--ln:rgba(255,255,255,.09);--a:#F5B942;--ok:#4ADE80;--bad:#F16A6A;--h:"Baloo 2",ui-rounded,sans-serif;--b:Nunito,system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(ellipse at 50% -10%,#1A2757,var(--bg) 55%);color:var(--t);font-family:var(--b);min-height:100%}
+body{display:flex;justify-content:center;padding:max(18px,env(safe-area-inset-top)) 12px max(18px,env(safe-area-inset-bottom))}
+#app{width:100%;max-width:400px;min-height:760px;background:#101a3d;border:1px solid var(--ln);border-radius:30px;padding:20px 16px 24px;position:relative;overflow:hidden;animation:f .3s}
+@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1,h2,h3{font-family:var(--h);margin:0}h1{font-size:30px;line-height:1;background:linear-gradient(#FFE9B8,var(--g));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:12px;color:var(--d);font-weight:700;margin-top:4px}.row{display:flex;gap:8px;align-items:center}.sp{justify-content:space-between}
+.card{background:var(--p);border:1px solid var(--ln);border-radius:18px;padding:14px;margin-top:12px}
+.btn{width:100%;margin-top:14px;border:0;border-radius:14px;padding:14px;font:800 16px var(--h);color:#241503;background:linear-gradient(var(--a),#D89420);box-shadow:0 6px 0 #9C6612;cursor:pointer}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #9C6612}.btn:disabled{opacity:.4}.btn.g{background:var(--p2);color:var(--t);box-shadow:none;border:1px solid var(--ln)}
+input,textarea{width:100%;background:var(--p);border:1px solid var(--ln);border-radius:12px;color:var(--t);font:700 14px var(--b);padding:12px;margin-top:8px}textarea{min-height:130px;resize:none}
+input:focus,textarea:focus{outline:2px solid var(--a)}
+.pill{background:var(--p);border:1px solid var(--ln);border-radius:99px;padding:5px 10px;font-size:12px;font-weight:800}
+.chip{font-size:10px;font-weight:800;color:var(--d);letter-spacing:.4px}
+.seg{display:flex;gap:4px;margin-top:10px}.seg i{flex:1;height:9px;border-radius:5px;background:rgba(255,255,255,.09)}.seg i.on{background:var(--c)}.seg i.new{animation:p .8s 2}
+@keyframes p{50%{transform:scaleY(1.9)}}
+.w{border-radius:18px;padding:14px;margin-top:12px;border:1px solid var(--ln);cursor:pointer}.w.lock{opacity:.5;filter:grayscale(.6)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ch{background:var(--p);border:2px solid var(--ln);border-radius:16px;padding:12px;text-align:center;cursor:pointer}.ch.on{border-color:var(--g);background:var(--p2)}.ch b{display:block;font:800 15px var(--h)}.ch span{font-size:34px}.ch small{color:var(--d);font-size:11px;font-weight:700}
+.tabs{display:flex;gap:6px;margin:14px 0 4px}.tabs div{flex:1;text-align:center;padding:9px;border-radius:10px;background:var(--p);font-weight:800;font-size:13px;cursor:pointer}.tabs .on{background:var(--g);color:#241503}
+.bub{background:var(--p);border:1px solid var(--ln);border-radius:16px 16px 16px 4px;padding:12px;font-size:14px;line-height:1.5;color:#C7CFEC;margin-top:10px}
+.mic{width:78px;height:78px;border-radius:50%;border:0;font-size:30px;cursor:pointer;background:radial-gradient(circle at 35% 30%,#FFDA85,var(--a));box-shadow:0 0 0 6px rgba(245,185,66,.15)}.mic.r{background:radial-gradient(circle at 35% 30%,#FF8A6B,#FF6B4A);animation:p2 1s infinite}
+@keyframes p2{50%{box-shadow:0 0 0 14px rgba(255,107,74,.12)}}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;background:var(--p2);color:var(--t);border:1px solid var(--ln);border-radius:12px;padding:11px;font:700 13.5px var(--b);cursor:pointer}.opt.ok{border-color:var(--ok);background:rgba(74,222,128,.15)}.opt.no{border-color:var(--bad);background:rgba(241,106,106,.15)}
+.msg{margin-top:12px;padding:11px;border-radius:12px;font-size:13px;font-weight:700;background:rgba(241,106,106,.13);color:var(--bad)}.msg.ok{background:rgba(74,222,128,.13);color:var(--ok)}
+.st{display:flex;justify-content:space-around;margin-top:12px}.st div{text-align:center;font:800 15px var(--h)}.st small{display:block;font:700 10px var(--b);color:var(--d)}
+.big{font:800 34px var(--h);color:var(--g);text-align:center;margin-top:10px}.nav{display:flex;gap:8px;margin-top:18px}.nav div{flex:1;text-align:center;background:var(--p);border:1px solid var(--ln);border-radius:14px;padding:9px 2px;font-size:11px;font-weight:800;color:var(--d);cursor:pointer}.nav .on{color:var(--g)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--p2);border:1px solid var(--ln);padding:11px 16px;border-radius:14px;font-weight:800;font-size:13px;opacity:0;transition:.25s;pointer-events:none;max-width:90%;text-align:center}#toast.s{opacity:1}
+.wv{display:flex;gap:3px;height:22px;align-items:center;justify-content:center;margin:14px 0 10px}.wv i{width:3px;border-radius:2px;background:var(--a);height:5px}.wv.r i{animation:wv .6s infinite alternate}@keyframes wv{to{height:22px}}
+</style></head><body><div id="app"></div><div id="toast"></div>
+<script>
+const W=[{n:"Ancient Era",g:"🏺",c:"#D9A441",l:"A1–A2",xp:50,co:10,f:"claridad y secuencia",bg:"#3A2E1A"},{n:"Modern Era",g:"🏙️",c:"#3DD9C4",l:"A2–B2",xp:70,co:12,f:"fluidez y naturalidad",bg:"#1F3B33"},{n:"Future Era",g:"🛸",c:"#8B7CF6",l:"B2–C1",xp:90,co:15,f:"precisión y coherencia",bg:"#241A3F"}];
+// t:tipo, l:CEFR, m:mínimo (segundos o palabras), u:[pregunta, correcta, incorrecta, audio]
+const M=[[
+{t:"s",l:"A1",h:"Say Hello",p:"Say your name and one thing you see. Example: My name is Ana. I see a stone.",m:5,u:["Choose the correct sentence:","I see a river.","I a river see."]},
+{t:"w",l:"A1",h:"My Object",p:"Write 2 short sentences about an object. Example: This is a vase. It is old.",m:8,u:["Complete: This ___ a vase.","is","are"]},
+{t:"s",l:"A2",h:"The Ruins",p:"Describe the ruins in 3 simple sentences: what you see and what it looks like.",m:12,u:["Order: the / old / is / temple","The temple is old.","Is the old temple."]},
+{t:"w",l:"A2",h:"Traveler's Diary",p:"Write 4 sentences about your first day. Use first and then.",m:25,u:["Choose: ___ I woke up. Then I walked.","First","Because"]},
+{t:"s",l:"A2",h:"The Guardian's Question",p:"Guardian: Why do you want to travel in time? Answer using because.",m:18,u:["Which word gives a reason?","because","then"]}],[
+{t:"s",l:"A2",h:"At the Café",p:"Order a drink and a snack. Be polite and say please.",m:15,u:["Listen. What does the person want?","A coffee","A taxi","Can I have a coffee, please?"]},
+{t:"w",l:"A2+",h:"Text a Friend",p:"Write a casual text inviting a friend to do something this weekend.",m:20,u:["Listen. What is the plan?","Watch a movie","Study","Are you free on Friday? Let's watch a movie."]},
+{t:"s",l:"B1",h:"A Daily Problem",p:"Explain a problem you had today (bus, phone, homework) and what you did about it.",m:25,u:["Listen. Why did they walk?","The bus was late","They like walking","My bus was late, so I walked."]},
+{t:"w",l:"B1+",h:"Quick Review",p:"Write a review of a place you know. Give your opinion and one reason. Use contractions (it's, don't).",m:40,u:["Listen. What is the opinion?","Good food, high price","Bad food","The food was great, but it was expensive."]},
+{t:"s",l:"B2",h:"Job Interview",p:"Interviewer: Tell me about yourself, one strength and an example of using it.",m:35,u:["Listen. How long?","Three years","Three months","I have worked in sales for three years."]}],[
+{t:"s",l:"B2",h:"Instruct the Robot",p:"Give the robot step-by-step instructions to make a sandwich. Use first, then, after that.",m:35,u:["Choose the connector: Press start. ___, wait for the light.","After that","Because"]},
+{t:"w",l:"B2",h:"Mission Log",p:"Write a technical log of a space mission problem and its cause. Use because or so.",m:55,u:["The sensor failed, ___ the ship stopped.","so","but"]},
+{t:"s",l:"B2+",h:"Your Invention",p:"Describe an invention, the problem it solves and how it will change daily life.",m:45,u:["Which sentence predicts the future?","It will save energy.","It saved energy."]},
+{t:"w",l:"B2+",h:"Message to an AI",p:"Ask an AI assistant to plan your week. Include two constraints and one condition with if.",m:70,u:["If you ___ the data, I will send it.","approve","approved"]},
+{t:"s",l:"C1",h:"Negotiate the Future",p:"Negotiate a trade: state your offer, make a concession, and predict the consequences.",m:60,u:["If you lower the price, we ___ buy more.","will","did"]}]];
+const CH=[["Aria","🏺","Exploradora antigua","n"],["Leo","🛹","Viajero moderno","n"],["Nova","🚀","Ingeniera del futuro","n"],["Kai","⏳","Guardián del tiempo","k"],["Mira","📖","Cronista","m"]];
+const SH=[["m1","Marco de pergamino","🖼️",40,0],["m2","Corona de laurel","🌿",60,0],["m3","Zapatillas","👟",50,1],["m4","Stickers","✨",40,1],["m5","Aura holográfica","🔮",70,2],["m6","Casco espacial","🪖",60,2]];
+const RX=[/\b(first|then|after|because)\b/i,/\b(i'm|it's|don't|can't|let's|i'll|i've|didn't|isn't)\b/i,/\b(because|so|therefore|if|will|would)\b/i];
+const TP=["usa conectores como first, then, because","usa contracciones (I'm, it's, don't)","usa conectores de causa-efecto (because, so, if)"];
+const fresh=()=>({u:null,xp:0,co:0,s:{c:0,l:""},pr:[0,0,0],done:{},own:[]});
+function load(){try{return JSON.parse(localStorage.getItem("eqtt2"))||fresh()}catch(e){return fresh()}}
+function save(){try{localStorage.setItem("eqtt2",JSON.stringify(S))}catch(e){}}
+let S=load(),cur={w:0,i:0},rec=0,secs=0,demo=0,tm=null,busy=0,lastR=null;
+const $=s=>document.querySelector(s),R=h=>{$("#app").innerHTML=h;$("#app").style.animation="none";void $("#app").offsetWidth;$("#app").style.animation=""};
+const lvl=()=>1+Math.floor(Math.sqrt(S.xp/50)),today=()=>{const d=new Date();const p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())};
+const dd=(a,b)=>Math.round((new Date(a)-new Date(b))/864e5),streak=()=>S.s.l&&dd(today(),S.s.l)<=1?S.s.c:0;
+function T(m){const t=$("#toast");t.textContent=m;t.className="s";clearTimeout(T.x);T.x=setTimeout(()=>t.className="",2400)}
+const seg=(n,c,nw)=>`<div class="seg">${[0,1,2,3,4].map(k=>`<i class="${k<n?"on":""} ${k==nw?"new":""}" style="--c:${c}"></i>`).join("")}</div>`;
+const nav=a=>`<div class="nav"><div class="${a=="home"?"on":""}" onclick="home()">🏠 Mapa</div><div class="${a=="shop"?"on":""}" onclick="shop()">🛍️ Tienda</div><div class="${a=="prof"?"on":""}" onclick="prof()">👤 Perfil</div></div>`;
+const unlocked=w=>w==0||S.pr[w-1]==5;
+
+function welcome(){R(`<div style="text-align:center;margin-top:60px"><div style="font-size:64px">⏳</div><h1 style="margin-top:14px">ENGLISH QUEST<br>Time Travel</h1><div class="sub">Speak. Write. Travel through time.</div></div>
+<div class="card"><b>3 mundos · 15 misiones</b><div class="sub">Speaking y Writing con progreso gradual: cada misión suma exactamente 20 % a su mundo. Demo con evaluación simulada; tu progreso se guarda en este navegador.</div></div>
+<button class="btn" onclick="auth('r')">Comenzar</button><button class="btn g" onclick="auth('l')">Ya tengo cuenta</button>`)}
+function auth(m,err){R(`<h2>${m=="r"?"Crear cuenta":"Iniciar sesión"}</h2><div class="tabs"><div class="${m=="r"?"on":""}" onclick="auth('r')">Registro</div><div class="${m=="l"?"on":""}" onclick="auth('l')">Login</div></div>
+${m=="r"?`<input id="nm" placeholder="Nombre">`:""}<input id="em" type="email" placeholder="Correo"><input id="pw" type="password" placeholder="Contraseña (mín. 6)">${m=="r"?`<input id="yr" type="number" placeholder="Año de nacimiento">`:""}
+${err?`<div class="msg">${err}</div>`:""}<button class="btn" onclick="doAuth('${m}')">${m=="r"?"Continuar":"Entrar"}</button>`)}
+function doAuth(m){const e=$("#em").value.trim().toLowerCase(),p=$("#pw").value;
+if(!/^\S+@\S+\.\S+$/.test(e))return auth(m,"Correo no válido.");if(p.length<6)return auth(m,"La contraseña necesita al menos 6 caracteres.");
+if(m=="l"){if(!S.u||S.u.e!=e||S.u.p!=p)return auth("l","Cuenta no encontrada o contraseña incorrecta (demo local).");return home()}
+const n=$("#nm").value.trim(),y=+$("#yr").value;if(!n)return auth(m,"Escribe tu nombre.");
+if(!y||y>new Date().getFullYear()-13)return auth(m,"Se requiere consentimiento de un tutor para menores de 13 años.");
+S=fresh();S.u={n,e,p,y,c:null};save();pick()}
+function pick(sel){R(`<h2>Elige tu personaje</h2><div class="sub">Es solo estético: tu progreso y dificultad no cambian.</div><div class="cg" style="margin-top:12px">${CH.map((c,i)=>`<div class="ch ${sel===i?"on":""}" onclick="pick(${i})"><span>${c[1]}</span><b>${c[0]}</b><small>${c[2]}</small></div>`).join("")}</div>
+<button class="btn" ${sel==null&&S.u.c==null?"disabled":""} onclick="${sel!=null?`S.u.c=${sel};save();home()`:S.u.c!=null?"home()":""}">Confirmar</button>`)}
+function home(){const st=streak(),done=S.pr.every(x=>x==5);
+R(`<div class="row sp"><div class="row"><span style="font-size:34px">${CH[S.u.c][1]}</span><div><h3>${S.u.n}</h3><div class="sub" style="margin:0">Nivel ${lvl()} · ${S.xp} XP</div></div></div><div class="row"><span class="pill">🔥 ${st}</span><span class="pill">🪙 ${S.co}</span></div></div>
+${done?`<div class="msg ok">🏆 ¡Completaste los 3 mundos!</div>`:""}
+${W.map((w,i)=>{const n=S.pr[i],lk=!unlocked(i);return `<div class="w ${lk?"lock":""}" style="background:linear-gradient(135deg,${w.bg},var(--p) 75%)" onclick="openW(${i})"><div class="row sp"><span style="font-size:28px">${w.g}</span><span class="pill">${lk?"🔒 Bloqueado":n==5?"✓ Completado":"CEFR "+w.l}</span></div><h3 style="margin-top:6px">${w.n}</h3>${seg(n,w.c)}<div class="sub">${n*20}% · ${n}/5 misiones · enfoque: ${w.f}</div></div>`}).join("")}${nav("home")}`)}
+function openW(w){if(!unlocked(w))return T("🔒 Completa el mundo anterior al 100 %");if(S.pr[w]==5)return T("✨ Mundo completado");cur={w,i:S.pr[w]};mission()}
+
+function mission(){const m=M[cur.w][cur.i],w=W[cur.w];secs=0;rec=0;busy=0;clearInterval(tm);
+R(`<div class="row sp"><span class="pill" onclick="home()" style="cursor:pointer">←</span><span class="pill">${m.t=="s"?"🎤 Speaking":"✍️ Writing"} · ${m.l}</span></div>
+<div class="chip" style="margin-top:14px;color:${w.c}">${w.n.toUpperCase()} · MISIÓN ${cur.i+1}/5</div><h2>${m.h}</h2><div class="chip" id="chip" style="margin-top:4px">ESTADO: STARTED</div>
+<div class="bub">${CH[S.u.c][1]} ${m.p}</div>
+<div class="card" id="wu"><b style="font-size:13px">Calentamiento (opcional, sin XP)</b><div class="sub" style="font-size:13px;color:var(--t)">${m.u[3]?`<span class="pill" style="cursor:pointer" onclick="say()">🔊 Escuchar</span> `:""}${m.u[0]}</div>${wuOpts(m)}</div>
+${m.t=="s"?`<div class="wv" id="wv">${"<i></i>".repeat(16)}</div><div style="text-align:center"><button class="mic" id="mic" onclick="toggle()">🎤</button><div class="sub" id="tm">0 s · mínimo ${m.m} s</div><div class="sub" style="cursor:pointer" onclick="demo=!demo;T(demo?'Demo: tiempo ×5':'Tiempo normal')">⏩ Modo demo (×5)</div></div>`
+:`<textarea id="tx" placeholder="Write here in English…" oninput="wc()"></textarea><div class="row sp sub"><span id="wcn">0 palabras</span><span>mínimo ${m.m}</span></div><button class="btn" id="sd" onclick="sendW()">Enviar</button>`}
+<div id="out"></div>`)}
+function wuOpts(m){const o=[[m.u[1],1],[m.u[2],0]];if(Math.random()<.5)o.reverse();return o.map(x=>`<button class="opt" onclick="this.classList.add('${x[1]?"ok":"no"}');if(!${x[1]})this.parentNode.querySelectorAll('.opt').forEach(b=>b.disabled=true)">${x[0]}</button>`).join("")}
+function say(){const m=M[cur.w][cur.i];try{const u=new SpeechSynthesisUtterance(m.u[3]);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){T(m.u[3])}}
+const chip=s=>{const c=$("#chip");if(c)c.textContent="ESTADO: "+s};
+function wc(){const m=M[cur.w][cur.i],n=($("#tx").value.trim().match(/\S+/g)||[]).length;$("#wcn").textContent=n+" palabras";chip("IN_PROGRESS")}
+function toggle(){const m=M[cur.w][cur.i];if(busy)return;
+if(!rec){rec=1;secs=0;chip("IN_PROGRESS");$("#mic").classList.add("r");$("#mic").textContent="⏹️";$("#wv").classList.add("r");$("#out").innerHTML="";
+tm=setInterval(()=>{secs+=demo?5:1;$("#tm").textContent=secs+" s · mínimo "+m.m+" s";if(secs>=90)toggle()},1000)}
+else{rec=0;clearInterval(tm);busy=1;$("#mic").classList.remove("r");$("#mic").textContent="🎤";$("#wv").classList.remove("r");chip("SUBMITTED");setTimeout(()=>{chip("EVALUATING");setTimeout(evalS,800)},500)}}
+function bad(why){busy=0;chip("REJECTED_INVALID");$("#out").innerHTML=`<div class="msg">${why}<br><small>Sin penalización: puedes intentarlo de nuevo.</small></div>`}
+function evalS(){const m=M[cur.w][cur.i];if(secs<m.m)return bad(`Audio demasiado corto (${secs} s). Necesitas al menos ${m.m} s.`);
+const st=1+(secs>=m.m*1.3)+(secs>=m.m*1.8);finish(st,st<3?["habla un poco más para desarrollar tus ideas"]:[])}
+function sendW(){if(busy)return;const m=M[cur.w][cur.i],t=$("#tx").value.trim(),ws=t.match(/\S+/g)||[],n=ws.length;chip("SUBMITTED");
+if(n<m.m)return bad(`Te faltan palabras: llevas ${n} de ${m.m}.`);
+if(((t.toLowerCase().match(/\b(el|la|los|que|de|y|es|un|una|por|para|con|mi|se)\b/g)||[]).length)/n>.25)return bad("Parece que escribiste en español. Inténtalo en inglés.");
+busy=1;chip("EVALUATING");setTimeout(()=>{let met=0,tot=2,tips=[];
+if(/^[A-Z]/.test(t)&&/[.!?]$/.test(t))met++;else tips.push("empieza con mayúscula y cierra con punto");
+if(cur.w>0||cur.i>1){tot++;if(RX[cur.w].test(t))met++;else tips.push(TP[cur.w])}
+if(n>=m.m*1.4)met++;else tips.push("desarrolla un poco más tus ideas");
+finish(1+Math.round(2*met/tot),tips)},800)}
+
+function complete(w,i,stars){const id=w*10+i;
+if(S.done[id])return Object.assign({replayed:1},S.done[id]);
+if(i!=S.pr[w])return{err:"out_of_order"};if(!unlocked(w))return{err:"locked"};
+let xp=W[w].xp,co=W[w].co+[0,0,3,6][stars],bonus=0;S.pr[w]++;
+if(S.pr[w]==5){xp+=100;co+=30;bonus=1}
+const snap={stars,xp,co,bonus,w,n:S.pr[w]};S.done[id]=snap;S.xp+=xp;S.co+=co;
+const t=today();if(S.s.l!=t){S.s.c=S.s.l&&dd(t,S.s.l)==1?S.s.c+1:1;S.s.l=t}
+save();return snap}
+function finish(stars,tips){chip("EVALUATED");const r=complete(cur.w,cur.i,stars);if(r.err){busy=0;return bad("No se puede completar: "+r.err)}
+chip("COMPLETED");lastR={r,tips,w:cur.w,i:cur.i};setTimeout(result,400)}
+function result(){const {r,tips,w:wi}=lastR,w=W[wi],k=CH[S.u.c][3],nm=CH[S.u.c][0];
+const tone=k=="k"?"⏳ El tiempo registró tu avance. ":k=="m"?"📖 Cada intento cuenta y se nota tu progreso. ":"";
+const txt=`${tone}Enfoque de este mundo: ${w.f}. ${tips.length?"Para mejorar: "+tips.join("; ")+".":"¡Sin observaciones importantes!"}${k=="m"?" Sigue así: la práctica constante es lo que hace avanzar.":""}`;
+R(`<div style="text-align:center;margin-top:20px"><div style="font-size:54px">${["","🌱","⭐","🌟"][r.stars]}</div><div class="big">+${r.xp} XP</div><div class="sub">+${r.co} 🪙 · ${"★".repeat(r.stars)}${"☆".repeat(3-r.stars)}</div></div>
+<div class="card"><div class="row sp"><b>${w.n}</b><b>${r.n*20}%</b></div>${seg(r.n,w.c,r.n-1)}</div>
+<div class="card" style="font-size:13px;line-height:1.5"><b>${nm}:</b> ${txt}<div class="sub" style="margin-top:8px">Demo: la evaluación es simulada. En la app real la hace el servidor con STT y Claude.</div></div>
+${r.bonus?`<div class="msg ok">🎉 ¡${w.n} completado! +100 XP y +30 🪙 de bono.${wi<2?" Nuevo mundo desbloqueado.":""}</div>`:""}
+${r.n<5?`<button class="btn" onclick="cur={w:${wi},i:${r.n}};mission()">Siguiente misión</button>`:""}<button class="btn g" onclick="home()">Volver al mapa</button>`)}
+
+function shop(){R(`<div class="row sp"><h2>Tienda</h2><span class="pill">🪙 ${S.co}</span></div><div class="sub">Cada mundo desbloquea 2 ítems al completarse.</div>
+${SH.map(s=>{const o=S.own.includes(s[0]),lk=S.pr[s[4]]<5;return `<div class="card row sp" style="${lk?"opacity:.5":""}"><div class="row"><span style="font-size:28px">${s[2]}</span><div><b>${s[1]}</b><div class="sub" style="margin:0">${W[s[4]].n}</div></div></div><button class="pill" style="cursor:pointer;color:var(--t)" onclick="buy('${s[0]}')">${o?"✓ Tuyo":lk?"🔒":"🪙 "+s[3]}</button></div>`}).join("")}${nav("shop")}`)}
+function buy(id){const s=SH.find(x=>x[0]==id);if(S.own.includes(id))return T("Ya lo tienes");if(S.pr[s[4]]<5)return T("🔒 Completa "+W[s[4]].n);if(S.co<s[3])return T("🪙 Monedas insuficientes");S.co-=s[3];S.own.push(id);save();T("✨ Compraste "+s[1]);shop()}
+function prof(){R(`<div class="row"><span style="font-size:44px">${CH[S.u.c][1]}</span><div><h2>${S.u.n}</h2><div class="sub" style="margin:0">${CH[S.u.c][0]} · ${CH[S.u.c][2]}</div></div></div>
+<div class="st card"><div>${lvl()}<small>Nivel</small></div><div>${S.xp}<small>XP</small></div><div>🔥${streak()}<small>Racha</small></div><div>🪙${S.co}<small>Monedas</small></div></div>
+${W.map((w,i)=>`<div class="card"><div class="row sp"><b>${w.g} ${w.n}</b><span class="sub" style="margin:0">${S.pr[i]*20}%</span></div>${seg(S.pr[i],w.c)}</div>`).join("")}
+<div class="sub" style="margin-top:12px">Ítems: ${S.own.length?S.own.map(i=>SH.find(s=>s[0]==i)[2]).join(" "):"ninguno aún"}</div>
+<button class="btn g" onclick="pick(S.u.c)">Cambiar personaje</button><button class="btn g" onclick="welcome()">Cerrar sesión</button><button class="btn g" onclick="if(confirm('¿Reiniciar la demo y borrar el progreso?')){S=fresh();save();welcome()}">Reiniciar demo</button>${nav("prof")}`)}
+S.u&&S.u.c!=null?home():S.u?pick():welcome();
+</script></body></html>
